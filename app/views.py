@@ -15,8 +15,8 @@ def index():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-		sense = SenseHat()
-		sense.show_message("Hello {}!".format(form.openid.data))
+        sense = SenseHat()
+        sense.show_message("Hello {}!".format(form.openid.data))
         #flash('Login requested for OpenID="{}", remember_me={}'.format(form.openid.data, form.remember_me.data))
         return redirect('/index')
     return render_template('login.html', 
