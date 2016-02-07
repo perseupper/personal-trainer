@@ -1,4 +1,5 @@
 from sense_hat import SenseHat
+from time import sleep
 
 sense = SenseHat()
 
@@ -45,7 +46,7 @@ n,r,r,r,r,r,r,n,
 n,r,r,r,r,r,r,n,
 n,r,r,r,r,r,r,n,
 n,r,r,r,r,r,r,n,
-N,r,r,r,r,r,r,n,
+n,r,r,r,r,r,r,n,
 n,n,n,n,n,n,n,n
 ]
 
@@ -110,7 +111,7 @@ ni,ni,o,o,o,o1,o1,o1,
 o1,o1,o1,o,o,o,ni,ni,
 o2,o2,o3,o,o1,o3,o,o,
 ni,o3,o,ni,o1,o2,o3,ni,
-O3,ni,o,ni,o1,o2,ni,o3
+o3,ni,o,ni,o1,o2,ni,o3
 ]
 
 
@@ -137,11 +138,20 @@ o1,ni,o2,ni,o3,o,ni,o1
 ]
 
 sense.set_pixels(play)
+sleep(1)
 sense.set_pixels(pause)
+sleep(1)
 sense.set_pixels(stop)
+sleep(1)
 sense.set_pixels(off)
+sleep(1)
 
-sense.set_pixels(load0)
-sense.set_pixels(load1)
-sense.set_pixels(load2)
-sense.set_pixels(load3)
+while True:
+	sense.set_pixels(load0)
+	sleep(0.2)	
+	sense.set_pixels(load1)
+	sleep(0.2)
+	sense.set_pixels(load2)
+	sleep(0.2)
+	sense.set_pixels(load3)
+	sleep(0.2)
