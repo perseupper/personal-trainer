@@ -1,0 +1,40 @@
+[
+{
+"start": "01/04/2016 15:59:24",
+"minorlevel": 0,
+"majorlevel": 1,
+"end": "01/04/2016 15:59:24",
+"difficulty": 4,
+"exercise": 7
+},
+{
+"start": "01/04/2016 15:59:24",
+"minorlevel": 1,
+"majorlevel": 1,
+"end": "01/04/2016 15:59:24",
+"difficulty": 4,
+"exercise": 1
+},
+{
+"start": "01/04/2016 15:59:24",
+"minorlevel": 1,
+"majorlevel": 1,
+"end": "01/04/2016 15:59:24",
+"difficulty": 4,
+"exercise": 2
+},
+{
+"end": "01/04/2016 15:59:24",
+"start": "01/04/2016 15:59:24",
+"difficulty": 4,
+"minorlevel": 0,
+"majorlevel": 2
+},
+{
+"end": "01/04/2016 15:59:24",
+"start": "01/04/2016 15:59:24",
+"difficulty": 4,
+"minorlevel": 1,
+"majorlevel": 2
+}
+]
