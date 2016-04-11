@@ -2,6 +2,9 @@
 from enum import Enum
 import datetime as dt
 import json
+from time import sleep
+from os.path import isfile
+from os import remove
 
 timefmt = "%d/%m/%Y %H:%M:%S"
 
@@ -277,7 +280,7 @@ class Circuit(Workout):
 		return description
 
 class PiTrainerState(Enum):
-	no_program = 1
+	load_program = 1
 	ready_for_exercise = 2
 	doing_exercise = 3
 	exercise_too_hard = 4
@@ -286,6 +289,12 @@ class PiTrainerState(Enum):
 	finished_workout = 7
 	upload_results = 8
 	ready_to_turn_off = 9
+
+def shaken_twice():
+	pass
+
+def upload_results():
+	pass
 
 ''' User instructions
 
@@ -325,6 +334,62 @@ because of the vibrations this will pause. two shakes can also be used to
 pause and play.
 
 '''
+
+pi_trainer = PiTrainerState.load_program
+program = None
+
+while True:
+	sleep(0.5)
+	if pi_trainer is PiTrainerState.load_program:
+
+		# If Pi Trainer is started and there is an old completed workout stored, we need to upload it.
+		if isfile('completed.json'):
+			pi_trainer = PiTrainerState.upload_results
+		else:
+			# Display 'not ready' on screen
+			sense.set_pixels(not_ready)
+			try:
+				with open('program.json','r') as f:
+					try:
+						program = json.loads(f.read())
+						remove('program.json')
+						pi_trainer = PiTrainerState.ready_for_exercise
+					except ValueError:
+						pass
+			except FileNotFoundError:
+				pass
+
+	elif pi_trainer is PiTrainerState.ready_for_exercise:
+		# Display 'play' on screen
+		pass
+	elif pi_trainer is PiTrainerState.doing_exercise:
+		pass
+	elif pi_trainer is PiTrainerState.exercise_too_hard:
+		pass
+	elif pi_trainer is PiTrainerState.paused_exercise:
+		pass
+	elif pi_trainer is PiTrainerState.give_feedback:
+		pass
+	elif pi_trainer is PiTrainerState.finished_workout:
+		pass
+	elif pi_trainer is PiTrainerState.upload_results:
+
+		if isfile('completed.json'):
+			# Display 'uploading' on screen
+			sense.set_pixels(uploading)
+			upload_results()
+			remove('completed.json')
+
+		if isfile('program.json'):
+			pi_trainer = PiTrainerState.load_program
+		else:
+			pi_trainer = PiTrainerState.ready_to_turn_off
+
+	elif pi_trainer is PiTrainerState.ready_to_turn_off:
+		sense.set_pixels(turn_off)
+	else:
+		pass
+
 completed = []
 with open('program.json','r') as f:
 
