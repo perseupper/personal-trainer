@@ -276,6 +276,55 @@ class Circuit(Workout):
 			rest)
 		return description
 
+class PiTrainerState(Enum):
+	no_program = 1
+	ready_for_exercise = 2
+	doing_exercise = 3
+	exercise_too_hard = 4
+	paused_exercise = 5
+	give_feedback = 6
+	finished_workout = 7
+	upload_results = 8
+	ready_to_turn_off = 9
+
+''' User instructions
+
+1. When you are ready, shake the PiTrainer twice. The flashing green 'play'
+arrow will appear. Once shaken twice again, The Pi will start. 2. Place the
+PiTrainer in a secure position where it will not fall or be trodden on. It
+will then scroll text telling you what apparatus you should use, whether it be
+a mat or a rowing machine.
+
+<When you are ready to start the exercise …>
+
+<I think all exercises are timed, right?  When your exercise is coming to an
+<end, the PiTrainer will …>
+
+6. If the activity is too hard (over-straining you) then move the purple
+square towards the red border one step over for a little too hard, or move
+twice so the purple square touches the red for much too hard.
+
+5.If you want to pause the Pi at any point during a timed exercise, move the
+purple square towards the blue border with the joystick.
+
+3. When a timed activity finishes, you can record how difficult or easy you
+found it.  Move the purple square towards the red side if you found it
+difficult or towards the green side if you found it easy.  Shake the Pi twice
+to confirm your choice, and flashing green 'play' arrow will appear. Once
+shaken twice again, the PiTrainer will tell you about your next exercise.
+
+4. Continue as above.  When you have finished your last activity in the
+workout, rather than showing a green arrow, the PiTrainer will flash a red
+stop sign.
+
+8. This should make the pi quit the activity and return to the home screen.
+then pull the joystick up to shut down the pi, then return it to the pi bank.
+alternatively, pull the joystick down 3 times - one to pause, one to return to
+the menu, and one to shut down. if the pi falls, it will automatically pause,
+because of the vibrations this will pause. two shakes can also be used to
+pause and play.
+
+'''
 completed = []
 with open('program.json','r') as f:
 
