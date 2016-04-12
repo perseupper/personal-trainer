@@ -5,6 +5,22 @@ import json
 from time import sleep
 from os.path import isfile
 from os import remove
+#import urllib2
+import netifaces
+
+'''
+def internet_on():
+    try:
+        response = urllib2.urlopen('http://74.125.228.100',timeout=1)
+        return True
+    except urllib2.URLError as err:
+    	pass
+    return False
+'''
+
+def eth0_is_up():
+    addr = netifaces.ifaddresses('eth0')
+    return netifaces.AF_INET in addr
 
 timefmt = "%d/%m/%Y %H:%M:%S"
 
@@ -335,48 +351,89 @@ pause and play.
 
 '''
 
-pi_trainer = PiTrainerState.load_program
-program = None
+# If Pi Trainer is started and there is an old completed workout stored, we need to upload it.
+if isfile('completed.json'):
+	pi_trainer = PiTrainerState.upload_results
+else:
+	pi_trainer = PiTrainerState.load_program
+
+program = []
+exercise_index = 0
+to_do = None
+completed = []
+loops_per_sec = 4
 
 while True:
-	sleep(0.5)
+	sleep(1/loops_per_sec)
+
 	if pi_trainer is PiTrainerState.load_program:
 
-		# If Pi Trainer is started and there is an old completed workout stored, we need to upload it.
-		if isfile('completed.json'):
-			pi_trainer = PiTrainerState.upload_results
-		else:
-			# Display 'not ready' on screen
-			sense.set_pixels(not_ready)
-			try:
-				with open('program.json','r') as f:
-					try:
-						program = json.loads(f.read())
-						remove('program.json')
-						pi_trainer = PiTrainerState.ready_for_exercise
-					except ValueError:
-						pass
-			except FileNotFoundError:
-				pass
+		# Display 'not ready' on screen
+		sense.set_pixels(not_ready)
+		try:
+			with open('program.json','r') as f:
+				try:
+					program = json.loads(f.read())
+					remove('program.json')
+					pi_trainer = PiTrainerState.ready_for_exercise
+				except ValueError:
+					pass
+		except FileNotFoundError:
+			pass
 
 	elif pi_trainer is PiTrainerState.ready_for_exercise:
+
 		# Display 'play' on screen
-		pass
+		sense.set_pixels(play)
+		if shaken_twice():
+			to_do = program[exercise_index]
+			exercise_index += 1
+			pi_trainer = PiTrainerState.doing_exercise
+
 	elif pi_trainer is PiTrainerState.doing_exercise:
-		pass
+		# Update the display
+
+		# Check for user input and update the state
+		if pause():
+			pi_trainer = PiTrainerState.paused_exercise
+		elif too_hard():
+			pi_trainer = PiTrainerState.exercise_too_hard
+		elif timer == 0:
+			pi_trainer = PiTrainerState.give_feedback
+		else:
+			timer -= 1
+
 	elif pi_trainer is PiTrainerState.exercise_too_hard:
 		pass
 	elif pi_trainer is PiTrainerState.paused_exercise:
 		pass
 	elif pi_trainer is PiTrainerState.give_feedback:
-		pass
+		# Get feedback from the user about how difficult or easy the exercise was
+
+		if exercise_index == len(program):
+			pi_trainer = PiTrainerState.finished_workout
+		else:
+			pi_trainer = PiTrainerState.ready_for_exercise
+
 	elif pi_trainer is PiTrainerState.finished_workout:
-		pass
+
+		# Display 'plug in to a network' logo so results can be uploaded
+		sense.set_pixels(plug_me_in)
+
+		if not isfile('completed.json'):
+			with open('completed.json', 'w') as f:
+				f.write(json.dumps(completed,indent=0))
+
+		# Wait for a network connection before trying to upload results
+		if eth0_is_up():
+			pi_trainer = PiTrainerState.upload_results
+
 	elif pi_trainer is PiTrainerState.upload_results:
 
+		sense.set_pixels(uploading)
+		
 		if isfile('completed.json'):
 			# Display 'uploading' on screen
-			sense.set_pixels(uploading)
 			upload_results()
 			remove('completed.json')
 
