@@ -1,6 +1,8 @@
 from sense_hat import SenseHat
 from time import sleep
 
+# Added a comment
+
 sense = SenseHat()
 
 W = [255, 255, 255] #white
