@@ -18,6 +18,94 @@ o2 = [255, 178, 102] #pale orange
 o3 = [255, 204, 153] #peach/overwashed orange
 ni = [0, 0, 0] #nothing
 
+plugin0 = [
+n,n,n,n,n,n,n,n,
+n,n,b,b,n,n,n,r,
+n,b,b,b,b,b,n,r,
+b,b,b,b,n,n,n,r,
+n,b,b,b,b,b,n,r,
+n,n,b,b,n,n,n,r,
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n
+]
+
+plugin1 = [
+n,n,n,n,n,n,n,n,
+n,n,n,b,b,n,n,r,
+n,n,b,b,b,b,b,r,
+b,b,b,b,b,n,n,r,
+n,n,b,b,b,b,b,r,
+n,n,n,b,b,n,n,r,
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n
+]
+
+plugin2 = [
+n,n,n,n,n,n,n,n,
+n,n,n,n,b,b,n,r,
+n,n,n,b,b,b,b,r,
+b,b,b,b,b,b,n,r,
+n,n,n,b,b,b,b,r,
+n,n,n,n,b,b,n,r,
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n
+]
+
+plugin3 = [
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,b,b,r,
+n,n,n,n,b,b,b,r,
+b,b,b,b,b,b,b,r,
+n,n,n,n,b,b,b,r,
+n,n,n,n,n,b,b,r,
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n
+]
+
+plugin4 = [
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,g,
+n,n,n,n,n,n,g,n,
+n,n,n,n,n,g,n,n,
+g,n,n,n,g,n,n,n,
+n,g,n,g,n,n,n,n,
+n,n,g,n,n,n,n,n,
+n,n,n,n,n,n,n,n
+]
+
+upload0 = [
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,
+b,n,n,n,n,n,n,n,
+]
+
+upload1 = [
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,
+b,b,n,n,n,n,n,n,
+n,n,b,n,n,n,n,n,
+b,n,b,n,n,n,n,n,
+]
+
+upload2 = [
+n,m,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,
+b,b,n,n,n,n,n,n,
+n,n,b,b,n,n,n,n,
+n,n,n,n,b,n,n,n,
+b,b,n,n,b,n,n,n,
+n,n,b,n,n,b,n,n,
+b,n,b,n,n,b,n,n
+]
+
 play = [
 n,n,g,n,n,n,n,n,
 n,n,g,g,n,n,n,n,
