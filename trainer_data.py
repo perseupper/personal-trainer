@@ -296,6 +296,7 @@ class Circuit(Workout):
 		return description
 
 class PiTrainerState(Enum):
+    select_user = 10
 	load_program = 1
 	ready_for_exercise = 2
 	doing_exercise = 3
@@ -366,7 +367,11 @@ loops_per_sec = 4
 while True:
 	sleep(1/loops_per_sec)
 
-	if pi_trainer is PiTrainerState.load_program:
+	if pi_trainer is PiTrainerState.select_user:
+        # Download userBitmaps.json so that the user can select their profile
+        # 
+        pass
+	elif pi_trainer is PiTrainerState.load_program:
 
 		# Display 'not ready' on screen
 		sense.set_pixels(not_ready)
