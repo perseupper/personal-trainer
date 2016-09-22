@@ -18,8 +18,6 @@ o2 = [255, 178, 102] #pale orange
 o3 = [255, 204, 153] #peach/overwashed orange
 ni = [0, 0, 0] #nothing
 
-black = [0,0,0]
-
 plugin0 = [
 n,n,n,n,n,n,n,n,
 n,n,b,b,n,n,n,r,
