@@ -13,10 +13,7 @@ y = [255, 255, 0] #yellow
 n = [0, 0, 0] #nothing
 p = [139, 15, 255] #perse purple
 o = [255, 128, 0] #orange
-o1 = [255, 153, 51] #light orange
-o2 = [255, 178, 102] #pale orange
-o3 = [255, 204, 153] #peach/overwashed orange
-ni = [0, 0, 0] #nothing
+m = [244, 66, 220]#magenta
 
 plugin0 = [
 n,n,n,n,n,n,n,n,
@@ -182,50 +179,84 @@ charactermap = [
 	]
 
 load0 = [
-o2,ni,o1,o,ni,o3,ni,o2,
-ni,o2,o1,o,ni,o3,o2,ni,
-o3,o3,o2,o,o3,o2,o1,o1,
-ni,ni,o3,o,o,o,o,o,
-o,o,o,o,o,o3,ni,ni,
-o1,o1,o2,o3,o,o2,o3,o3,
-ni,o2,o3,ni,o,o1,o2,ni,
-o2,ni,o3,ni,o,o1,ni,o2
+b,g,y,o,r,m,p,b,
+p,r,y,o,r,m,g,g,
+m,m,g,o,r,g,y,y,    
+r,r,r,r,r,o,o,o,    
+o,o,o,r,r,r,r,r,
+y,y,g,r,o,g,m,m,
+g,g,m,r,o,y,r,p,
+b,p,m,r,o,y,g,b
 ]
 
 
 load1 = [
-o3,ni,o2,o1,ni,o,ni,o3,
-ni,o3,o2,o1,ni,o,o3,ni,
-o,o,o3,o2,o,o3,o2,o2,
-ni,ni,o,o,o,o1,o1,o1,
-o1,o1,o1,o,o,o,ni,ni,
-o2,o2,o3,o,o1,o3,o,o,
-ni,o3,o,ni,o1,o2,o3,ni,
-o3,ni,o,ni,o1,o2,ni,o3
+p,b,g,y,o,r,m,p,
+m,b,g,y,o,r,b,b,
+r,r,b,y,r,b,g,g,
+o,o,r,r,r,y,y,y,
+y,y,y,r,r,r,o,o,
+g,g,b,r,y,b,r,r,
+b,b,r,o,y,g,b,m,
+p,m,r,o,y,g,b,p
 ]
 
 
 load2 = [
-o,ni,o3,o2,ni,o1,ni,o,
-ni,o,o3,o2,ni,o1,o,ni,
-o1,o1,o,o2,o1,o,o3,o3,
-ni,ni,o1,o,o,o2,o2,o2,
-o2,o2,o2,o,o,o1,ni,ni,
-o3,o3,o,o1,o2,o,o1,o1,
-ni,o,o1,ni,o2,o3,o,ni,
-o,ni,o1,ni,o2,o3,ni,o
+m,p,b,g,y,o,r,m,
+r,r,b,g,y,o,r,p,
+o,o,r,g,o,r,b,b,
+y,y,o,r,r,g,g,g,
+g,g,g,r,r,o,y,y,
+b,b,r,o,g,r,o,o,
+p,r,o,y,g,b,r,r,
+m,r,o,y,g,b,p,m,
 ]
 
 load3 = [
-o1,ni,o,o3,ni,o2,ni,o1,
-ni,o1,o,o3,ni,o2,o1,ni,
-o2,o2,o1,o,o2,o1,o,o,
-ni,ni,o2,o,o,o,o3,o3,
-o3,o3,o,o,o,o2,ni,ni,
-o,o,o1,o2,o,o1,o2,o2,
-ni,o1,o2,ni,o3,o,o1,ni,
-o1,ni,o2,ni,o3,o,ni,o1
+r,m,p,b,g,y,o,r,
+o,r,p,b,g,y,r,m,
+y,y,r,b,y,r,p,p,
+g,g,y,r,r,b,b,b,
+b,b,b,r,r,y,g,g,
+p,p,r,y,b,r,y,y,
+m,r,y,g,b,p,r,o,
+r,o,y,g,b,p,m,r
 ]
+
+load4 = [
+o,r,m,p,b,g,y,o,
+y,r,m,p,b,g,r,r,
+g,g,r,p,g,r,m,m,
+b,b,g,r,r,p,p,p,
+p,p,p,r,r,g,b,b,
+m,m,r,g,p,r,g,g,
+r,r,g,b,p,m,r,y,
+o,y,g,b,p,m,r,o
+]
+
+load5 = [
+y,o,r,m,p,b,g,y,
+g,o,r,m,p,b,o,o,
+b,b,o,r,p,o,r,r,
+p,p,p,r,r,r,m,m,
+m,m,r,r,r,p,p,p,
+r,r,o,p,r,o,b,b,
+o,o,b,p,m,r,o,g,
+y,g,b,p,m,r,o,y
+]
+
+load6 = [
+g,y,o,r,m,p,b,g,
+b,y,o,r,m,p,y,y,
+p,p,y,r,m,y,o,o,
+m,m,m,r,r,r,r,r,
+r,r,r,r,r,m,m,m,
+o,o,y,m,r,y,p,p,
+y,y,p,m,r,o,y,b,
+g,b,p,m,r,o,y,g
+]
+
 
 sense.set_pixels(play)
 sleep(1)
