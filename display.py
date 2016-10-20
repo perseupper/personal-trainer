@@ -138,7 +138,7 @@ n,n,n,n,n,n,n,n
 ]
 
 
-off = [
+power = [
 n,n,n,n,n,n,n,n,
 n,n,n,r,r,n,n,n,
 n,r,n,r,r,n,r,n,
@@ -176,7 +176,7 @@ charactermap = [
 	[n,n,b,n,],
 	[n,b,n,n,],
 	]
-	]
+]
 
 load0 = [
 b,g,y,o,r,m,p,b,
@@ -276,3 +276,8 @@ while True:
 	sleep(0.1)
 	sense.set_pixels(load3)
 	sleep(0.1)
+    sense.set_pixels(load4)
+    sleep(0.1)
+    sense.set_pixels(load5)
+    sleep(0.1)
+    sense.set_pixels(load6)
