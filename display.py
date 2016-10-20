@@ -70,6 +70,8 @@ n,n,g,n,n,n,n,n,
 n,n,n,n,n,n,n,n
 ]
 
+plugin = [plugin0,plugin1,plugin2,plugin3,plugin4]
+
 upload0 = [
 n,n,n,n,n,n,n,n,
 n,n,n,n,n,n,n,n,

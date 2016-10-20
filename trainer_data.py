@@ -296,6 +296,7 @@ class Circuit(Workout):
 		return description
 
 class PiTrainerState(Enum):
+    connect_to_network = 11
     select_user = 10
 	load_program = 1
 	ready_for_exercise = 2
@@ -324,7 +325,7 @@ a mat or a rowing machine.
 <When you are ready to start the exercise …>
 
 <I think all exercises are timed, right?  When your exercise is coming to an
-<end, the PiTrainer will …>
+<end, the PiTrainer will count down from a certain number in seconds…>
 
 6. If the activity is too hard (over-straining you) then move the purple
 square towards the red border one step over for a little too hard, or move
@@ -363,6 +364,7 @@ exercise_index = 0
 to_do = None
 completed = []
 loops_per_sec = 4
+plugin_index = 0
 
 while True:
 	sleep(1/loops_per_sec)
@@ -371,6 +373,14 @@ while True:
         # Download userBitmaps.json so that the user can select their profile
         # 
         pass
+	elif pi_trainer is PiTrainerState.connect_to_network:
+        # Display plugin symbol and flash indefinitely
+        # display_image(plugin[plugin_index])
+        # plugin_index += 1
+        # plugin_index %= len(plugin)
+        # 
+        pass
+    
 	elif pi_trainer is PiTrainerState.load_program:
 
 		# Display 'not ready' on screen
@@ -396,7 +406,7 @@ while True:
 			pi_trainer = PiTrainerState.doing_exercise
 
 	elif pi_trainer is PiTrainerState.doing_exercise:
-		# Update the display
+		# Update the display with countdown from required number
 
 		# Check for user input and update the state
 		if pause():
@@ -410,10 +420,11 @@ while True:
 
 	elif pi_trainer is PiTrainerState.exercise_too_hard:
 		pass
+    #shaken three times
 	elif pi_trainer is PiTrainerState.paused_exercise:
 		pass
 	elif pi_trainer is PiTrainerState.give_feedback:
-		# Get feedback from the user about how difficult or easy the exercise was
+		# Get feedback from the user about how difficult or easy the exercise was using joystick and tick symbol -needs bitmapping-
 
 		if exercise_index == len(program):
 			pi_trainer = PiTrainerState.finished_workout
@@ -423,6 +434,7 @@ while True:
 	elif pi_trainer is PiTrainerState.finished_workout:
 
 		# Display 'plug in to a network' logo so results can be uploaded
+		# needs to be changed to requisite plugin_index sequence
 		sense.set_pixels(plug_me_in)
 
 		if not isfile('completed.json'):
@@ -436,7 +448,8 @@ while True:
 	elif pi_trainer is PiTrainerState.upload_results:
 
 		sense.set_pixels(uploading)
-		
+        # load sequence pending update
+        
 		if isfile('completed.json'):
 			# Display 'uploading' on screen
 			upload_results()
